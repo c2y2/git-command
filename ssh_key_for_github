@@ -1,0 +1,19 @@
+1,生成一个新的SSH密钥
+ssh-keygen -C "your_email@example.com" -t rsa
+2，将生成的内容复制到gighub上
+找到刚才生成的密钥 (默认为~/.ssh/id_rsa.pub) 文件打开，然后复制里面的内容。
+接着转到 github 站点，进入 Account Setting –> SSH Keys 选项后，
+点击 add SSH key 并将刚才复制的内容粘贴保存。
+3，测试
+ssh -v git@github.com
+如果出现类似以下内容的提示，则证明SSH连接工作正常了：
+Hi c2y2! You've successfully authenticated, 
+but GitHub does not provide shell ac
+4测试应用
+先远程创建一个测试应用，然后使用如下命令再在本地建立引用仓库
+touch README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:你的git账户/应用名.git
+git push -u origin master 这样我们以后就可以直接添加更改等操作了，也不再需要每次提交等操作都需要用户名密码等繁琐操作了
